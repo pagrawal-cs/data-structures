@@ -18,7 +18,7 @@ public class ListUtil
 
         while(iterator.hasNext())
         {
-            iterator.next();
+            iterator.next(); 
         }  
         
         int i = strings.size();
@@ -30,7 +30,7 @@ public class ListUtil
             i--;
         }
 
-        strings = finalList;
-        System.out.println(strings);
+        strings.clear();
+        strings.addAll(finalList);
     }
 }

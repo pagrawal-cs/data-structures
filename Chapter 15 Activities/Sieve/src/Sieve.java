@@ -39,6 +39,6 @@ public class Sieve
         }
 
         // Printing the new set with all the prime numbers
-        System.out.print(set);
+        System.out.print("The prime numbers up to " + n + " are: " + set);
     }
 }

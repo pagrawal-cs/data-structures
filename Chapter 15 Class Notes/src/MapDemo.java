@@ -35,7 +35,7 @@ public class FirstLetterMap
             Set<Character> keys = FirstLetter.keySet();
             for (Character key: keys)
             {
-            System.out.println(key + ": [" + FirstLetter.get(key) + "]");  // It's not necessary that the list would be in order starting from Henry to Dr. Miller
+            System.out.println(key + ": [" + FirstLetter.get(key) + "]");
 
             }
             

@@ -9,11 +9,10 @@ import java.io.*;
  * Use the Java 8 merge() feature.
 */
 public class FirstLetterMap
-{
+{    
     public static void main(String[] args)
     {
-        String filename = "Chapter 15 Activities/FirstLetterMap/FirstLetterMap1/src/test1.txt";
-
+        String filename = "Chapter 15 Activities//FirstLetterMap//FirstLetterMap1//src//test1.txt";
         try (Scanner in = new Scanner(new File(filename)))
         {
 
@@ -33,7 +32,12 @@ public class FirstLetterMap
 
             // Print the map here in this form
             // a: [a, able, aardvark]
-            System.out.println(FirstLetter);
+            Set<Character> keys = FirstLetter.keySet();
+            for (Character key: keys)
+            {
+            System.out.println(key + ": [" + FirstLetter.get(key) + "]");
+
+            }
             
         } catch (FileNotFoundException e)
         {

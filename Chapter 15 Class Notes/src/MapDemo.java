@@ -1,62 +1,40 @@
-import java.util.*;
-import java.io.*;
+import java.awt.Color;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 /**
- * Read all words from a file and add them to a map
- * whose keys are the first letters of the words and
- * whose values are sets of words that start with
- * that same letter.
- * Then print out the word sets in alphabetical order.
- * Use the Java 8 merge() feature.
+    This program demonstrates a map that maps names to colors.
 */
-public class FirstLetterMap
-{    
+public class MapDemo
+{
     public static void main(String[] args)
     {
-        String filename = "Chapter 15 Activities//FirstLetterMap//FirstLetterMap1//src//test1.txt";
-        try (Scanner in = new Scanner(new File(filename)))
+        /*
+         * The MAP interface is generic.
+         * The first type given is the type of the key.
+         * The second type given is the type of the value.
+         */
+        Map<String, Color> favColors = new HashMap<>();
+
+        // Add elements to the map using the put method
+        favColors.put("Henry", Color.BLUE);
+        favColors.put("Jack", Color.RED);
+        favColors.put("Priya", Color.GREEN);
+
+        // Two DIFFERENT ELEMENTS with the SAME VALUE
+        favColors.put("Dr. Miller", Color.GREEN);
+
+        // The same key CANNOT have two different values
+        // Using put on a key that exists, changes the value
+        favColors.put("Jack", Color.MAGENTA);
+
+        // Create a set of the keys in a map; helpful for iterating thru a map
+        Set<String> keys = favColors.keySet();
+        for (String key: keys)
         {
+            System.out.println(key + " (" + key.hashCode() + "): " + favColors.get(key));  // It's not necessary that the list would be in order starting from Henry to Dr. Miller
 
-            // Create your map here
-            Map<Character, String> FirstLetter = new HashMap<>();
-
-            while (in.hasNext())
-            {
-                String word = clean(in.next());
-                Character c = word.charAt(0);
-
-                // Update the map here
-                // Use the Java 8 merge method
-                FirstLetter.merge(c, word, (a,b) -> a + " " + b);
-
-            }
-
-            // Print the map here in this form
-            // a: [a, able, aardvark]
-            Set<Character> keys = FirstLetter.keySet();
-            for (Character key: keys)
-            {
-            System.out.println(key + ": [" + FirstLetter.get(key) + "]");
-
-            }
-            
-        } catch (FileNotFoundException e)
-        {
-            System.out.println("Cannot open: " + filename);
         }
     }
-
-    public static String clean(String s)
-    {
-        String r = "";
-        for (int i = 0; i < s.length(); i++)
-        {
-            char c = s.charAt(i);
-            if (Character.isLetter(c))
-            {
-                r = r + c;
-            }
-        }
-        return r.toLowerCase();
-    }
-
 }

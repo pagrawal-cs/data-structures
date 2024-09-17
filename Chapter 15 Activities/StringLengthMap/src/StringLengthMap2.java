@@ -27,7 +27,7 @@ public class StringLengthMap2
 
                 // Update the map here
                 // Use the Java 8 merge() method
-                StringLength.merge(len, new HashSet<>(Set.of(word)), (a,b) -> {a.addAll(b); return a});
+                StringLength.merge(len, new HashSet<>(Set.of(word)), (a,b) -> {a.addAll(b); return a;});
             }
 
             // Print the strings, in increasing order of their length

@@ -1,4 +1,5 @@
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Scanner;
 /**
  * Implement a to do list. Tasks have a priority between 
@@ -12,15 +13,18 @@ import java.util.Scanner;
 public class ToDoList
 {
     // Instance variable(s)
-    . . .
+    Queue<Task> tasks = new PriorityQueue<>();
+    int num;
+    String answer;
+    Scanner in = new Scanner(System.in);
 
     /**
      * Constructor
     */
     public ToDoList()
     {
-        // Complete this
-        . . .
+        
+
     }
 
     /**
@@ -34,9 +38,10 @@ public class ToDoList
         System.out.println("     next (remove and print most urgent task)");
         System.out.println("     quit (exit this program)");
         System.out.println();
-        
+
         Scanner in = new Scanner(System.in);
-        
+
+                
         do
         {
             System.out.print("> ");
@@ -50,6 +55,7 @@ public class ToDoList
             }
         } 
         while (! option.equals("quit"));
+    
     }
     
     /**
@@ -59,10 +65,18 @@ public class ToDoList
     */
     public void addTask(String optionStr)
     {
+        //System.out.println("test");
         // Complete this method
-        . . .
-            
-            
+        /*num = in.nextInt();
+        answer = in.next();
+        tasks.add(new Task(num, answer));*/
+
+        num = Integer.parseInt(optionStr.substring(4, 5));
+
+        answer = optionStr.substring(5 );
+
+        tasks.add(new Task(num, answer));
+        
     }
 
     /**
@@ -74,7 +88,9 @@ public class ToDoList
         Task next = null;
         
         // Complete this method
-        . . .
+        
+        next = tasks.remove();
+        //System.out.println(next.getDescription());
         
         
         if (next == null)

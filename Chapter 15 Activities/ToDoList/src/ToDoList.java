@@ -2,12 +2,12 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
 /**
- * Implement a to do list. Tasks have a priority between 
+ * Implement a to do list. Tasks have a priority between
  * 1 and 9 (with 1 being most urgent), and a description.
- * When the user enters the command 'add priority description', 
- * the program adds a new task. When the user enters next, 
- * the program removes and prints the most urgent task. 
- * The quit command quits the program. 
+ * When the user enters the command 'add priority description',
+ * the program adds a new task. When the user enters next,
+ * the program removes and prints the most urgent task.
+ * The quit command quits the program.
  * Use a priority queue in your solution.
 */
 public class ToDoList
@@ -23,7 +23,7 @@ public class ToDoList
     */
     public ToDoList()
     {
-        
+       
 
     }
 
@@ -41,7 +41,7 @@ public class ToDoList
 
         Scanner in = new Scanner(System.in);
 
-                
+               
         do
         {
             System.out.print("> ");
@@ -53,11 +53,13 @@ public class ToDoList
             {
                 nextTask();
             }
-        } 
+        }
         while (! option.equals("quit"));
-    
+
+       // if ((option.startsWith("add")) || (option.equals("next")) || (option.equals("quit")) )
+   
     }
-    
+   
     /**
      * Parse the add option line.
      *
@@ -71,12 +73,22 @@ public class ToDoList
         answer = in.next();
         tasks.add(new Task(num, answer));*/
 
-        num = Integer.parseInt(optionStr.substring(4, 5));
+        try
+        {
+            
+        
+
+        num = Integer.parseInt(optionStr.substring(4, optionStr.indexOf(" ", 4)));
 
         answer = optionStr.substring(5 );
 
         tasks.add(new Task(num, answer));
+        }
+        catch (NumberFormatException e){
         
+            System.out.println("Not a valid input.");
+        }
+       
     }
 
     /**
@@ -86,13 +98,14 @@ public class ToDoList
     public void nextTask()
     {
         Task next = null;
-        
+       
         // Complete this method
-        
+       if (tasks.size() > 0){
         next = tasks.remove();
         //System.out.println(next.getDescription());
-        
-        
+       }
+       
+       
         if (next == null)
         {
             System.out.println("There are no tasks in the list.");

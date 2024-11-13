@@ -24,4 +24,3 @@ public class TreeTester
       System.out.println("Expected: C E G H I J");
    }
 }
-

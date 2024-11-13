@@ -64,4 +64,35 @@ public class Tree
     }
 
     // Additional methods will be added in later sections.
+
+    /**
+        Counts the number of leaves in a tree
+        @return the number of leaves in the tree
+    */
+    public int leafCount()
+    {
+        if (root == null) {
+            return 0;  // tree = empty --> 0 leaves
+        }
+    
+        return countLeaves(root);
+    }
+
+    // Helper method to count leaves for the leafCount() method
+    private int countLeaves(Node node)
+    {
+        // If the node has no children, it's a leaf
+        if (node.children.isEmpty()) {
+            return 1;
+        }
+    
+        // Recursively count leaves in all children
+        int leafCount = 0;
+        for (Node child : node.children) {
+            leafCount += countLeaves(child);
+        }
+    
+        return leafCount;
+    }
+
 }

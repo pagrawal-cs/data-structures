@@ -65,4 +65,49 @@ public class Tree
     }
 
     // Additional methods will be added in later sections.
+    
+    /**
+        Performs a depth-first traversal (pre-order).
+        @param v the visitor to process each node
+    */
+    public void depthFirst(Visitor v)
+    {
+        if (root != null) {
+            depthFirstHelper(root, v);
+        }
+    }
+
+    // Helper method for depthFirst traversal
+    private void depthFirstHelper(Node node, Visitor v)
+    {
+        if (node == null || !v.visit(node.data)) {
+            return;
+        }
+        for (Node child : node.children) {
+            depthFirstHelper(child, v);
+        }
+    }
+
+    /**
+        Performs a postorder traversal.
+        @param v the visitor to process each node
+    */
+    public void postorder(Visitor v)
+    {
+        if (root != null) {
+            postorderHelper(root, v);
+        }
+    }
+
+    // Helper method for postorder traversal
+    private void postorderHelper(Node node, Visitor v)
+    {
+        if (node == null) {
+            return;
+        }
+        for (Node child : node.children) {
+            postorderHelper(child, v);
+        }
+        v.visit(node.data); // Visit after children
+    }
 }

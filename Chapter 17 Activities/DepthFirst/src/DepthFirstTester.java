@@ -1,4 +1,3 @@
-import java.util.Iterator;
 
 /**
     This program demonstrates tree traversal.
